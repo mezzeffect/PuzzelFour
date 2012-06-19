@@ -37,7 +37,14 @@ namespace PuzzleFourGlossary.Repository.Tests.Helper
                              {
                                  new Glossary() {GlossaryId = 1,Term = "Brent"},
                                  new Glossary() {GlossaryId = 2,Term = "Darth"},
-                                 new Glossary() {GlossaryId = 3,Term = "Follower"}
+                                 new Glossary() {GlossaryId = 3,Term = "Follower"},
+                                 new Glossary() {GlossaryId = 3,Term = "Maker"},
+                                 new Glossary() {GlossaryId = 3,Term = "Green"},
+                                 new Glossary() {GlossaryId = 3,Term = "Red"},
+                                 new Glossary() {GlossaryId = 3,Term = "Yellow"},
+                                 new Glossary() {GlossaryId = 3,Term = "Fast"},
+                                 new Glossary() {GlossaryId = 3,Term = "Zoo"},
+                                 new Glossary() {GlossaryId = 3,Term = "Adam"}
                              };
         }
 

@@ -15,12 +15,11 @@ $ ->
 				myApp.glossaryViewModel.model.GlossaryEditModel.Definition(data.Definition())
 			
 		resetEditGlossary:()->
-			myApp.glossaryViewModel.errorMesssage("")
-
-			myApp.glossaryViewModel.model?.Glossaries(myApp.glossaryViewModel.modelBase?.Glossaries())
-			myApp.glossaryViewModel.model?.GlossaryEditModel(myApp.glossaryViewModel.model?.GlossaryEditModel())
-			
-			
+			myApp.glossaryViewModel.errorMessage("")
+			myApp.glossaryViewModel.model.GlossaryEditModel.Id(-1)
+			myApp.glossaryViewModel.model.GlossaryEditModel.Term("")
+			myApp.glossaryViewModel.model.GlossaryEditModel.Definition("")
+					
 			
 		saveGlossary:(data,e)->
 			action = "Glossary/SaveGlossary/"
@@ -39,9 +38,9 @@ $ ->
 								myApp.glossaryViewModel.errorMessage("failed to save compliance, check inputs and try again")
 						else
 							jsModel = window.utils.json.jsonToJsObject(data.model)
-							myApp.glossaryViewModel.model.Glossaries([])
 							myApp.glossaryViewModel.model.Glossaries((ko.mapping.fromJS(jsModel)).Glossaries())
 							$('#glossaryEditContainer').modal('hide')
+							
 
 					error : (jqXHR, textStatus, errorThrown) ->
 						myApp.glossaryViewModel.errorMessage ("Unable to connect to the Internet" + errorThrown)
@@ -76,4 +75,4 @@ $ ->
 				contentType: "application/json; charset=utf-8"
 		
 		init:()->
-			myApp.glossaryViewModel.modelBase = ko.mapping.fromJS(ko.toJS(myApp.glossaryViewModel.model))
+			

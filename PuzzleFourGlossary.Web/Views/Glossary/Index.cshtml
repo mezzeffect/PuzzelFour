@@ -13,7 +13,7 @@
         <input type="button" class="btn" id="btnAdd" name="btnAdd" data-bind="click:openPopUp"
                value="Add" data-toggle="modal" data-target="#glossaryEditContainer" data-bind="" />
            
-        <table id="complianceTable" class="table table-striped accordion-table" data-bind='visible:  model.Glossaries().length > 0'>
+        <table id="glossaryTable" class="table table-striped accordion-table" data-bind='visible:  model.Glossaries().length > 0'>
             <thead>
                 <tr style = "cursor: pointer">
                     <th width="50" >
@@ -110,7 +110,7 @@
 
         $('#glossaryEditContainer').bind('hide', function () {
             // Clear the edit glossary popup…
-            myApp.complianceViewModel.resetEditGlossary();
+            myApp.glossaryViewModel.resetEditGlossary();
         });
     }); 
 </script>

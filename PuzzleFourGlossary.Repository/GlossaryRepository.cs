@@ -44,7 +44,7 @@ namespace PuzzleFourGlossary.Repository
 
         public List<Glossary> All()
         {
-            return _glossaryDataContext.Glossaries.ToList();
+            return _glossaryDataContext.Glossaries.OrderBy(g=>g.Term).ToList();
         }
 
         public void SubmitChanges()

@@ -123,6 +123,7 @@
     <Content Include="public\js\common\jExpand.js" />
     <Content Include="public\js\common\jquery-1.7.2.min.js" />
     <Content Include="public\js\common\jquery.blockUI.js" />
+    <Content Include="public\js\common\jquery.tablesorter.js" />
     <Content Include="public\js\common\jquery.validate.js" />
     <Content Include="public\js\common\jquery.validate.unobtrusive.js" />
     <Content Include="public\js\common\json2.js" />

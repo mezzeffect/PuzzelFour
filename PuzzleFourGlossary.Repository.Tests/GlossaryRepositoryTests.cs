@@ -43,6 +43,19 @@ namespace PuzzleFourGlossary.Repository.Tests
         }
 
         [Test]
+        public void GlossaryRepositoryAllShouldReturnListOrderedByTermAlphabitically()
+        {
+            //arrange 
+            var repo = GetFakeDbContextRepository();
+
+            //act
+            var result = repo.All();
+
+            //assert
+            Assert.True(result.Last().Term == "Zoo");
+        }
+
+        [Test]
         public void GlossaryRepositoryAddShouldAddTheCorrectGlossary()
         {
             //arrange 

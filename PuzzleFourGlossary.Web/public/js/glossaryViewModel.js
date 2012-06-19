@@ -17,12 +17,10 @@
         }
       },
       resetEditGlossary: function() {
-        var _ref, _ref1, _ref2, _ref3;
-        myApp.glossaryViewModel.errorMesssage("");
-        if ((_ref = myApp.glossaryViewModel.model) != null) {
-          _ref.Glossaries((_ref1 = myApp.glossaryViewModel.modelBase) != null ? _ref1.Glossaries() : void 0);
-        }
-        return (_ref2 = myApp.glossaryViewModel.model) != null ? _ref2.GlossaryEditModel((_ref3 = myApp.glossaryViewModel.model) != null ? _ref3.GlossaryEditModel() : void 0) : void 0;
+        myApp.glossaryViewModel.errorMessage("");
+        myApp.glossaryViewModel.model.GlossaryEditModel.Id(-1);
+        myApp.glossaryViewModel.model.GlossaryEditModel.Term("");
+        return myApp.glossaryViewModel.model.GlossaryEditModel.Definition("");
       },
       saveGlossary: function(data, e) {
         var action, serverData;
@@ -44,7 +42,6 @@
                 }
               } else {
                 jsModel = window.utils.json.jsonToJsObject(data.model);
-                myApp.glossaryViewModel.model.Glossaries([]);
                 myApp.glossaryViewModel.model.Glossaries((ko.mapping.fromJS(jsModel)).Glossaries());
                 return $('#glossaryEditContainer').modal('hide');
               }
@@ -93,9 +90,7 @@
           contentType: "application/json; charset=utf-8"
         });
       },
-      init: function() {
-        return myApp.glossaryViewModel.modelBase = ko.mapping.fromJS(ko.toJS(myApp.glossaryViewModel.model));
-      }
+      init: function() {}
     };
   });
 
