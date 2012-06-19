@@ -1,0 +1,62 @@
+# Ignore file for Visual Studio 2008
+
+# use glob syntax
+syntax: glob
+
+# Ignore Visual Studio 2008 files
+*.obj
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.scc
+[Bb]in
+[Db]ebug*/
+obj/
+[Rr]elease/
+_ReSharper*/
+_ignore*/
+[Tt]est[Rr]esult*
+[Bb]uild[Ll]og.*
+*.[Pp]ublish.xml
+*.bak
+*.orig
+*.ReSharper
+glob:*.mdf
+glob:*.LDF
+*.vs10x
+DeleteMe\
+JanusModeling\*
+*/tmp/*
+glob:*~AutoRecover*
+SQL Server Management Studio/Backup Files*/
+[Pp]ackages/
+Workbench3.Web.Tests/Helpers/TestConstants.cs
+TestConstants.cs
+[Oo]utput/
+*crunch*.local.xml
+@solutions/scaffolding.config
+*.gpState
+aspnet_client/
+*.dotCover
+*.ncrunchsolution
+*.ncrunchproject
+Workbench3.Web\WB3Files\*
+logs/
+nCrunchTemp*
+Workbench3.Web/Newtonsoft.Json.dll
+Workbench3.Web/Newtonsoft.Json.xml
+_UpgradeReport_Files*

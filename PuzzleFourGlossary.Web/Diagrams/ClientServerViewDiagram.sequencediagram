@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" dslVersion="1.0.0.0" Id="f8b5537a-5842-49ee-8a79-afd377f5a355" name="ClientServerViewDiagram" mode="DotNet" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+  <packagedElements>
+    <packageHasNamedElement>
+      <interaction Id="a4db52cf-2bb5-477f-a765-444dfc29bf0a" name="ClientServerViewDiagram" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
+        <ownedCommentsInternal>
+          <comment Id="3193e499-8430-41db-8bb4-41af9fb15fed">
+            <body>Using Ko
+Using Foolproof validation
+Using JqueryValidation</body>
+          </comment>
+        </ownedCommentsInternal>
+        <fragments>
+          <behaviorExecutionSpecification Id="dc1d76c6-743a-456d-bfb2-66975071345f" name="BehaviorExecutionSpecification">
+            <coveredLifelines>
+              <lifelineMoniker Id="c6cfcf42-6348-4008-b014-29512b132443" LastKnownName="Server Side" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker Id="33836931-73df-4957-9693-a9c6b1000fb3" LastKnownName="ExecutionOccurrenceSpecification" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker Id="8e7dc07a-2cd4-4d89-a958-a9a304543457" LastKnownName="ExecutionOccurrenceSpecification" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="7731a725-00f7-4205-978c-c132daf5cc05" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="185b4468-ea7e-4637-b637-d99dd004a016" LastKnownName="MessageOccurrenceSpecification" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification Id="8e7dc07a-2cd4-4d89-a958-a9a304543457" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="0aa338e7-3559-4a72-b72c-940e8112796c" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="c6cfcf42-6348-4008-b014-29512b132443" LastKnownName="Server Side" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="837f3bf8-17c8-465a-b154-34f4312f63a1" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="27cc3596-26ab-4f00-910f-e343648f95d3" LastKnownName="Client Side" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="7731a725-00f7-4205-978c-c132daf5cc05" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="c6cfcf42-6348-4008-b014-29512b132443" LastKnownName="Server Side" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="185b4468-ea7e-4637-b637-d99dd004a016" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="c6cfcf42-6348-4008-b014-29512b132443" LastKnownName="Server Side" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification Id="7b5c32b5-dd3c-4f80-ad19-32a53f237756" name="MessageOccurrenceSpecification">
+            <covered>
+              <lifelineMoniker Id="27cc3596-26ab-4f00-910f-e343648f95d3" LastKnownName="Client Side" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification Id="33836931-73df-4957-9693-a9c6b1000fb3" name="ExecutionOccurrenceSpecification">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker Id="3b09548e-ed07-4e89-917c-0d416b85e0a9" LastKnownName="ExecutionEvent" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker Id="c6cfcf42-6348-4008-b014-29512b132443" LastKnownName="Server Side" />
+            </covered>
+          </executionOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline Id="27cc3596-26ab-4f00-910f-e343648f95d3" name="Client Side" isActor="false" lifelineDisplayName="Client Side">
+            <topLevelOccurrences>
+              <messageOccurrenceSpecificationMoniker Id="837f3bf8-17c8-465a-b154-34f4312f63a1" LastKnownName="MessageOccurrenceSpecification" />
+              <messageOccurrenceSpecificationMoniker Id="7b5c32b5-dd3c-4f80-ad19-32a53f237756" LastKnownName="MessageOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline Id="c6cfcf42-6348-4008-b014-29512b132443" name="Server Side" isActor="false" lifelineDisplayName="Server Side">
+            <topLevelOccurrences>
+              <executionOccurrenceSpecificationMoniker Id="8e7dc07a-2cd4-4d89-a958-a9a304543457" LastKnownName="ExecutionOccurrenceSpecification" />
+              <executionOccurrenceSpecificationMoniker Id="33836931-73df-4957-9693-a9c6b1000fb3" LastKnownName="ExecutionOccurrenceSpecification" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message Id="7e5d53a0-8ec8-4ee0-a4d8-b918e2c736b0" name="Performs a client side validation then passes the info using JQuery Ajax post to the server for processing" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="837f3bf8-17c8-465a-b154-34f4312f63a1" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="7731a725-00f7-4205-978c-c132daf5cc05" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+          <message Id="12f4016f-e52f-4831-8f22-cf63197050e4" name="performs client side validation then proccess the request if valid then returns the model to update the view" messageKind="Complete" messageSort="Reply" createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker Id="185b4468-ea7e-4637-b637-d99dd004a016" LastKnownName="MessageOccurrenceSpecification" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker Id="7b5c32b5-dd3c-4f80-ad19-32a53f237756" LastKnownName="MessageOccurrenceSpecification" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="0aa338e7-3559-4a72-b72c-940e8112796c" name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent Id="3b09548e-ed07-4e89-917c-0d416b85e0a9" name="ExecutionEvent" />
+    </packageHasNamedElement>
+  </packagedElements>
+</SequenceDesignerModel>

@@ -1,0 +1,62 @@
+﻿@helper RenderBreadCrumb(int leadId, string activeCrumbId, string[] disabledCrumbIds = null, bool hasAccount = false)
+    {
+    <a class="btn" id="bcLead" href="/lead/show/@leadId" title="Lead">1. Lead</a>
+    <a class="btn" id="bcQuote" href="/quote/index/@leadId" title="Quote">2. Quote</a>
+    <a class="btn" id="bcQualify" href="/qualify/index/@leadId" title="Qualify">3. Qualify</a>
+    <span class="btn disabled" id="bcOrder">4. Order</span>
+    <a class="btn" id="bcContract" href="/lead/contract/@leadId">5. Contract</a>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#@activeCrumbId").addClass("btn-inverse");
+            @if (disabledCrumbIds != null)
+            {
+                foreach (var id in disabledCrumbIds)
+                {
+                <text>
+                replaceLinkWithLabel("@id");
+                </text>
+                }
+            }
+            @if (leadId == 0 || !hasAccount)
+            {
+                <text>
+                replaceLinkWithLabel("bcContract");
+                </text>
+            }
+        });
+        function replaceLinkWithLabel(id) {
+            
+            var label = $("#"+id).text();
+            $("#"+id).replaceWith('<span class="btn disabled">' + label + '</span>');
+        }
+    </script>    
+}
+
+@helper RenderComplianceSubnav(string activeId)
+    {
+        <div class="subnav">
+            <ul id="CoSubnav" class="nav nav-pills">
+                <li id="coIndex" ><a href="/Compliance/compliance/index">Compliance</a></li>
+                <li id="coPermits" ><a href="/Compliance/permit/Index">Permits</a></li>
+            </ul>
+        </div>
+        
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                $('.CoSubnav li').removeClass('active');
+                $("#@activeId").addClass("active");
+
+
+                //                $('.CoSubnav li').click(function (e) {
+                //                    $('.navbar li').removeClass('active');
+                //                    var $this = $(this);
+                //                    if (!$this.hasClass('active')) {
+                //                        $this.addClass('active');
+                //                    }
+                //                    e.preventDefault();
+                //                });
+            });
+        </script>
+}
+        

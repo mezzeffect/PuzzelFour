@@ -1,0 +1,285 @@
+﻿@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@helper ValidationMessage(System.Web.Mvc.HtmlHelper Html, string name, string cssClass = "", string style = "")
+    {
+    @Html.ValidationMessage(name, "", new Dictionary<string, object> { { "class", cssClass }, { "style", style } })
+}
+@helper TextBox(System.Web.Mvc.HtmlHelper Html, string label, string name, string cssClass = "span3", string optionalName = "", bool enable = true, string prefix = "model", string changedEvent = "", string style = "", string labelStyle = "", string divstyle = "",string containerStyle="")
+    {
+    <div class="control-group clearfix"  style="@containerStyle">
+        @Label(label, style: labelStyle, id: name + "-label")
+        <div class="controls" @(string.IsNullOrEmpty(divstyle) ? "" : string.Format("style= {0}", divstyle))>
+            @Html.TextBox(name, "", new Dictionary<string, object> { { "data-bind", string.Format("value:{0}.{1}, enable:{2} {3}", prefix, name, enable.ToString().ToLower(), string.IsNullOrEmpty(changedEvent) ? "" : string.Format(", event: {{change: {0} }}", changedEvent)) }, { "data-value", "true" }, { "class", cssClass }, { "style", style } })
+            <br />
+            @ValidationMessage(Html, name, style: style)
+        </div>
+    </div>
+}
+@helper TextBoxOnly(System.Web.Mvc.HtmlHelper Html, string name, string cssClass = "span3", string optionalName = "", bool enable = true)
+    {
+    <div class="controls">
+        @Html.TextBox(name, "", new Dictionary<string, object> { { "data-bind", string.Format("value:model.{0}, enable:{1}", name, enable.ToString().ToLower()) }, { "data-value", "true" }, { "class", cssClass } })
+        @ValidationMessage(Html, name)
+    </div>
+}
+@helper TextBoxRequired(System.Web.Mvc.HtmlHelper Html, string label, string name, string value = "", string cssClass = "span3", bool bindValue = true, bool enable = true, string prefix = "model", string visible = "true", string validationCssClass = "span3", string changedEvent = "", string style = "",string labelStyle = "",string containerStyle="")
+    {
+        var val = value ?? "";
+    <div class="control-group clearfix" style="@containerStyle">
+        @Label(label, true, id: name + "-label",style:labelStyle)
+        <div class="controls">
+            @Html.TextBox(name, "", new Dictionary<string, object> { { "data-bind", string.Format("value:{0}.{1}, enable:{2}, visible:{3} {4}", prefix, name, enable.ToString().ToLower(), visible, string.IsNullOrEmpty(changedEvent) ? "" : string.Format(", event: {{change: {0} }}", changedEvent)) }, { "data-value", "true" }, { "class", cssClass }, { "style", style } })
+            <br />
+            @ValidationMessage(Html, name, validationCssClass)
+        </div>
+    </div>
+}
+
+@helper TextBoxChange(System.Web.Mvc.HtmlHelper Html, string label, string name, string changeEvent, string value = "", string cssClass = "span3", string onKeyUp = "", bool bindValue = true, bool enable = true)
+    {
+        var val = value ?? "";
+    <div class="control-group clearfix">
+        @Label(label, false, id: name + "-label")
+        <div class="controls">
+            @Html.TextBox(name, "", new Dictionary<string, object> { { "data-bind", string.Format("value:model.{0}, enable:{1},event: {{change: {2} }}", name, enable.ToString().ToLower(), changeEvent) }, { "data-value", "true" }, { "class", cssClass }, { "onkeyup", onKeyUp } })
+            @ValidationMessage(Html, name)
+        </div>
+    </div>
+}
+@helper TextBoxPassword(System.Web.Mvc.HtmlHelper Html, string label, string name, string value = "", string cssClass = "span3", bool bindValue = true, bool enable = true)
+    {
+        var val = value ?? "";
+    @Label(label, true, id: name + "-label")
+    <div class="controls">
+        @Html.Password(name, "", new Dictionary<string, object> { { "data-bind", string.Format("value:model.{0}, enable:{1}", name, enable.ToString().ToLower()) }, { "data-value", "true" }, { "class", cssClass } })
+        <br />
+        @ValidationMessage(Html, name)
+    </div>
+}
+@helper TextBoxNumber(System.Web.Mvc.HtmlHelper Html, string name, object value = null, string numberMessage = "Should be a number")
+    {
+        var val = value ?? "";
+    @Label(name, true, id: name + "-label")
+    <div class="editor-field">
+        <input type="text" name="@name" id="@name" value="@val" data-val="true" data-val-number="@numberMessage" />
+        @ValidationMessage(Html, name)
+    </div>
+}
+@helper TextBoxCallPhone(System.Web.Mvc.HtmlHelper Html, string label, string name, string value = "", string cssClass = "span3", bool bindValue = true, bool enable = true, string prefix = "model", string visible = "true", bool required = false)
+    {
+    <div class="control-group clearfix">
+        @Label(label, required, id: name + "-label")
+        <div class="controls">
+            @Html.TextBox(name, "", new Dictionary<string, object> { { "data-bind", string.Format("value:{0}.{1}, enable:{2},visible:{3}", prefix, name, enable.ToString().ToLower(), visible) }, { "data-value", "true" }, { "class", cssClass } })
+            <a  class="callphone" data-bind="@string.Format("value:{0}.{1}, visible: myApp.callPhoneVisibilty({0}.{1}), attr: {{href: myApp.callPhoneChange({0}.{1})}}", prefix, name)">
+            </a>
+            @ValidationMessage(Html, name)
+        </div>
+    </div>
+}
+@helper HiddenField(System.Web.Mvc.HtmlHelper Html, string name)
+    {
+    @Html.Hidden(name, name, new Dictionary<string, object> { { "data-bind", string.Format("value:model.{0}", name) } })
+}
+@helper TextArea(System.Web.Mvc.HtmlHelper Html, string label, string name, string value = "", string cssClass = "span3", bool bindValue = true, bool enable = true, string prefix = "model.", string labelstyle = "", int rows = 4, int columns = 20)
+    {
+        var val = value ?? "";
+    <div class="control-group">
+        @Form.Label(label + " ",style:labelstyle)
+        <div class="controls">
+            @Html.TextArea(name, "",rows, columns ,new Dictionary<string, object> { { "data-bind", string.Format("value:{0}{1}, enable:{2}", prefix, name, enable.ToString().ToLower()) }, { "data-value", "true" }, { "class", cssClass } })
+            <br />
+            @Form.ValidationMessage(Html, name)
+        </div>
+    </div>
+}
+@helper TextAreaRequired(System.Web.Mvc.HtmlHelper Html, string label, string name, string value = "", string cssClass = "span3", bool bindValue = true, bool enable = true, string prefix = "model.")
+    {
+        var val = value ?? "";
+    <div class="control-group">
+        @Form.Label(label + " ", true)
+        <div class="controls">
+            @Html.TextArea(name, "", new Dictionary<string, object> { { "data-bind", string.Format("value:{0}{1}, enable:{2}",prefix, name, enable.ToString().ToLower()) }, { "data-value", "true" }, { "class", cssClass } })
+            <br />
+            @Form.ValidationMessage(Html, name)
+        </div>
+    </div>
+}
+@helper Submit(string value = "Save")
+    {
+    <p>
+        <button type="submit" class="button positive">
+            <img src="/public/stylesheets/plugins/buttons/icons/tick.png" alt="" />@value
+        </button>
+    </p>
+    <div class="clear">
+    </div>
+}
+@helper HiddenID(object id, string key = "id")
+    {
+    <input type="hidden" name="@key" id="@key" value="@id" />
+}
+@helper CheckBox(string name, dynamic isChecked = null)
+    {
+    <div class="editor-field">
+        <input type="checkbox"  name="@name" @(isChecked == null || !isChecked ? "" : "checked='checked'")/>
+        @name
+    </div>
+}
+@helper BoundCheckBox(System.Web.Mvc.HtmlHelper Html, string label, string bindNameTo, string prefixModel = "model.")
+    {
+    <div class="control-group">
+        <div class="controls">
+            <label class="checkbox">
+                <input type="checkbox" name="@bindNameTo" data-bind="checked:@prefixModel@bindNameTo" />
+                <span>@label</span>
+            </label>
+        </div>
+    </div>
+}
+
+@helper Label(string name, bool required = false, string cssClass = "", string style = "", string id = "")
+    {
+        if (required)
+        {
+    <label id="@id" style="@style" class="control-label required @cssClass" >@name</label>
+        }
+        else
+        {
+    <label id="@id" style="@style" class="control-label @cssClass">@name</label>
+        }
+}
+@helper BoundLabel(System.Web.Mvc.HtmlHelper Html, string bindTextTo, string align = "left", string cssClass = "")
+    {
+    <label style="text-align: @align;" class="@cssClass">
+        <span @Html.Raw(string.Format("data-bind='text:{0}'", bindTextTo))></span>
+    </label>
+}
+@helper BoundFormLabel(System.Web.Mvc.HtmlHelper Html, string label, string name, string cssClass = "span3", string prefix = "model")
+    {
+    <div class="control-group">
+        @Label(label, false)
+        <div class="controls">
+            <label @Html.Raw(string.Format("data-bind='text:{0}.{1}', class='{2}'", prefix, name, cssClass)) style="margin-top: 5px; margin-left: 0px">
+            </label>
+        </div>
+    </div>
+}
+@helper Descriptor(dynamic table, dynamic obj)
+    {
+    @table.GetTitle(obj)
+}
+@helper Radio(string name, string label, string value, bool isChecked = false)
+    {
+    <label>
+        <input type="radio" value="@value"  name="@name" @(isChecked ? "checked='checked'" : "") /><span>@label</span></label>
+}
+@helper Radio(System.Web.Mvc.HtmlHelper Html, string name, string label, string value)
+    {
+    <div class="controls">
+        <label class="radio">
+            @Html.RadioButton(name, value, new Dictionary<string, object> { { "data-bind", string.Format("checked:{0}", name) } })
+            <span>@label</span>
+        </label>
+    </div>
+}
+@helper BoundRadio(System.Web.Mvc.HtmlHelper Html, string name, string label, string value, string checkedValueProperty, string radioBtnChangedEvent = "")
+    {
+    <label>
+        @Html.RadioButton(name, "", new Dictionary<string, object> { { "data-bind", string.Format("value: {0}, checked: {1} {2}", value, checkedValueProperty, string.IsNullOrEmpty(radioBtnChangedEvent) ? "" : string.Format(",event: {0}", radioBtnChangedEvent)) } })
+        <span data-bind="text: @label"></span>
+    </label>
+}
+@helper Radios(System.Web.Mvc.HtmlHelper Html, string label, string name, IDictionary<string, string> items, string itemWidth = "auto", string radioBtnChangedEvent = "", string prefixModel = "", bool isRequired = false)
+    {
+    @Label(label, isRequired)
+    <div class="controls">
+        @foreach (var item in items)
+        {
+            <label class="radio" style="width:@itemWidth">
+                @Html.RadioButton(name, item.Key, new Dictionary<string, object> { { "data-bind", string.Format("checked:{0}{1}{2}", prefixModel, name, string.IsNullOrEmpty(radioBtnChangedEvent) ? "" : ",click: " + radioBtnChangedEvent) } })<span>@item.Value</span></label>
+        }
+        @ValidationMessage(Html, name)
+    </div>
+}
+@helper Button(string label, string name, string size = "", bool isPrimary = false, string clickEvent = "", string cssClass = "", string enabled = "")
+    {
+    <button  type='submit' class="btn @(string.IsNullOrEmpty(cssClass) ? "" : cssClass) @(isPrimary ? "btn-primary" : "") @size" name="@name" id="@name" 
+     data-bind = "enable: @(string.IsNullOrEmpty(enabled) ? "true" : enabled) @(string.IsNullOrEmpty(clickEvent) ? "" : " ,click: " + clickEvent)">@label</button>
+}
+@helper PostButton(string label, string name, string size = "", bool isPrimary = false, string clickEvent = "", string cssClass = "", string popupmodeltemplate = "", string enabled = "")
+    {
+    <button type="button"  class="btn @(string.IsNullOrEmpty(cssClass) ? "" : cssClass) @(isPrimary ? "btn-primary" : "") @size" name="@name" id="@name" 
+     data-bind = "@((string.IsNullOrEmpty(clickEvent) ? "" : ("click: " + clickEvent)) + (string.IsNullOrEmpty(enabled) ? "" : (string.IsNullOrEmpty(clickEvent) ? ("enable:" + enabled) : (",enable:" + enabled))))">
+        @label</button>
+}
+@helper PostButtonDisabled(string label, string name, string size = "", bool isPrimary = false, string clickEvent = "", string cssClass = "", string popupmodeltemplate = "", string disabled = "")
+    {
+    <button type="button"  class="btn @(string.IsNullOrEmpty(cssClass) ? "" : cssClass) @(isPrimary ? "btn-primary" : "") @size" name="@name" id="@name" 
+     data-bind = "@((string.IsNullOrEmpty(clickEvent) ? "" : ("click: " + clickEvent)) + (string.IsNullOrEmpty(disabled) ? "" : (string.IsNullOrEmpty(clickEvent) ? ("disable:" + disabled) : (",disable:" + disabled))))">
+        @label</button>
+}
+@helper PopupButton(string label, string name, string size = "", bool isPrimary = false, string cssClass = "", string popupmodeltemplate = "", string enabled = "")
+    {
+    <button type="button" data-bind="enable: @(string.IsNullOrEmpty(enabled) ? "true" : enabled)" 
+    data-toggle="modal" data-target="#@popupmodeltemplate"  class="btn @(string.IsNullOrEmpty(cssClass) ? "" : cssClass) @(isPrimary ? "btn-primary" : "") @size" name="@name" id="@name">@label</button>
+}
+@helper ButtonSmall(string label, string name, bool isPrimary = false, string cssClass = "")
+    {
+    @Button(label, name, "btn-small", isPrimary, cssClass: cssClass)
+}
+@helper ButtonLarge(string label, string name, bool isPrimary = false, string clickEvent = "", string enabled = "", string cssClass = "")
+    {
+    @Button(label, name, "btn-large", isPrimary, clickEvent, enabled: enabled, cssClass: cssClass)
+}
+@helper StatesDropdown(System.Web.Mvc.HtmlHelper html, string label, string name, dynamic options, string selectedValueKey = "", string preifx = "model", string changedEvent = "")
+    {
+    <div class="control-group">
+        @Form.Label(label)
+        <div class="controls">
+            <select id="@name" name="@name" data-val="true" class="span2" 
+                data-bind= "@string.Format("value: {0}.{1} {2}", preifx, selectedValueKey, string.IsNullOrEmpty(changedEvent) ? "" : string.Format(", event: {{change: {0} }}", changedEvent))" >
+                <option value=''>[Select State]</option>
+                @foreach (var option in options)
+                {
+                    <option value='@option.StateAbrev' >@option.StateAbrev</option>
+                }
+            </select>
+            @Form.ValidationMessage(html, name)
+        </div>
+    </div>    
+}
+@helper StatesDropdownRequired(System.Web.Mvc.HtmlHelper html, string label, string name, dynamic options, string selectedValueKey = "", string prefixModel="model.", string errormsg = "State is required", string changedEvent = "")
+    {
+    <div class="control-group">
+        @Form.Label(label, true)
+        <div class="controls">
+            <select id="@name" name="@name" data-val="true" data-val-required="@errormsg" class="span2"
+                data-bind= "@string.Format("value: {0}{1} {2}", prefixModel, selectedValueKey, string.IsNullOrEmpty(changedEvent) ? "" : string.Format(", event: {{change: {0} }}", changedEvent))" >
+                <option value=''>[Select State]</option>
+                @foreach (var option in options)
+                {
+                    <option value='@option.StateAbrev' >@option.StateAbrev</option>
+                }
+            </select>
+            <br />
+            @Form.ValidationMessage(html, name)
+        </div>
+    </div>
+}
+
+@helper LeadSourceDropdown(System.Web.Mvc.HtmlHelper html, string label, string name, dynamic options, string selectedValueKey = "", string preifx = "model")
+    {
+    <div class="control-group">
+        @Form.Label(label)
+        <div class="controls">
+            <select id="@name" name="@name" data-bind= "@string.Format("value: {0}.{1}", preifx, selectedValueKey)" data-val="true" class="span3">
+                @foreach (var option in options)
+                {
+                    <option value='@option.LeadSourceID' >@option.LeadName</option>
+                }
+            </select>
+            @Form.ValidationMessage(html, name)
+        </div>
+    </div>    
+}
