@@ -12,11 +12,9 @@ namespace PuzzleFourGlossary.Web.Models
         public int Id { get; set; }
         
         [Required]
-        [MaxLength(20, ErrorMessage = "Invalid term, too long")]
         public string Term { get; set; }
         
         [Required]
-        [MaxLength(400, ErrorMessage = "Invalid definition, too long")]
         public string Definition { get; set; }
     }
 }
