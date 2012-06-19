@@ -26,7 +26,7 @@ syntax: glob
 [Bb]in
 [Db]ebug*/
 obj/
-[Rr]elease/
+[Rr]elease*/
 _ReSharper*/
 _ignore*/
 [Tt]est[Rr]esult*
@@ -44,19 +44,3 @@ JanusModeling\*
 glob:*~AutoRecover*
 SQL Server Management Studio/Backup Files*/
 [Pp]ackages/
-Workbench3.Web.Tests/Helpers/TestConstants.cs
-TestConstants.cs
-[Oo]utput/
-*crunch*.local.xml
-@solutions/scaffolding.config
-*.gpState
-aspnet_client/
-*.dotCover
-*.ncrunchsolution
-*.ncrunchproject
-Workbench3.Web\WB3Files\*
-logs/
-nCrunchTemp*
-Workbench3.Web/Newtonsoft.Json.dll
-Workbench3.Web/Newtonsoft.Json.xml
-_UpgradeReport_Files*
